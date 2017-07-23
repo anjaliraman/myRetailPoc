@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.test.myRetail.model.Price;
 import com.test.myRetail.model.Product;
 import com.test.myRetail.service.MyRetailService;
 
@@ -33,6 +34,24 @@ public class MyRetailController {
 	public void addProduct(@RequestBody Product product){
 		myRetailService.addProduct(product);
 	}
+	
+	@RequestMapping(value="/productName", method=RequestMethod.GET)
+	public String getProductName() {
+		String productName = myRetailService.getProductName();
+		return productName;
+	}
+	
+	@RequestMapping(value="/products/{id}/{name}", method=RequestMethod.GET)
+	public String getPricingInfoForIdAndName(@PathVariable long id, @PathVariable String name) {
+		String productName = myRetailService.getPricingInfo(id,name);
+		return productName;
+	}
+		
+	@RequestMapping(value="/products/{id}", method=RequestMethod.PUT) 
+	public Product updatePricingInfo(@PathVariable long id,@RequestBody Price price){
+		return myRetailService.updatePriceInfo(id, price);
+	}
+	
 	
 
 }

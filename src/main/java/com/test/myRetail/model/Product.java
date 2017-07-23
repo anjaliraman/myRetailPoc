@@ -1,5 +1,7 @@
 package com.test.myRetail.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,26 +13,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Product {
 	
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@Column(name = "PRODUCT_ID", nullable = false)
 	Long id;
 	
-	@JsonProperty
+	@JsonProperty(value="name")
+	@Column(name = "NAME", nullable = false)
 	String name;
 	
-	@JsonProperty
-	float price;
-	//Price price;
-	
+	@Embedded
+	@Column(name = "CURRENT_PRICE", nullable = false)
+	@JsonProperty(value="current_price")
+	Price price;
+		
 	public Product(){
 		
 	}
-	
-	public Product(String name, Long id, float price) {
+	public Product(Long id, String name, Price price) {
 		super();
 		this.name = name;
 		this.id = id;
 		this.price = price;
-		//this.price = price;;
 	}
 
 	public String getName() {
@@ -41,10 +43,6 @@ public class Product {
 		return id;
 	}
 
-//	public Price getPrice() {
-//		return price;
-//	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -53,18 +51,11 @@ public class Product {
 		this.id = id;
 	}
 
-	public float getPrice() {
+	public Price getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(Price price) {
 		this.price = price;
 	}
-
-//	public void setPrice(Price price) {
-//		this.price = price;
-//	}
-	
-	
-	
 }
