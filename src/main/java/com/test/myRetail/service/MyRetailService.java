@@ -39,11 +39,8 @@ public class MyRetailService {
 	
 	public Product getProductDetailsById(long id) {
 		String productName = getProductName();
-		
 		//get price details from DB
-		ProductPriceDao productDao = myRetailRepository.findOne(id);
-		System.out.println("Dao value: "+productDao.getId());
-		
+		ProductPriceDao productDao = myRetailRepository.findOne(id);		
 		Product p = new Product(id, productName, new Price(productDao.getPrice(),productDao.getCurrencyCode()));
 		return p;
 		
