@@ -1,4 +1,4 @@
-package com.test.myRetail.dto;
+package com.poc.myRetail.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

@@ -1,4 +1,4 @@
-package com.test.myRetail;
+package com.poc.myRetail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,12 +12,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
-import com.test.myRetail.dao.MyRetailRepository;
-import com.test.myRetail.dto.Product;
-import com.test.myRetail.model.ProductPriceDao;
+import com.poc.myRetail.dao.MyRetailRepository;
+import com.poc.myRetail.dto.Product;
+import com.poc.myRetail.model.ProductPriceDao;
 
 @SpringBootApplication
-@ComponentScan(basePackages={"com.test.myRetail"})
+@ComponentScan(basePackages={"com.poc.myRetail"})
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class, 
 		HibernateJpaAutoConfiguration.class,
 		JpaRepositoriesAutoConfiguration.class})

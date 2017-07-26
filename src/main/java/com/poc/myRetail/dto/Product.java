@@ -1,4 +1,4 @@
-package com.test.myRetail.dto;
+package com.poc.myRetail.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

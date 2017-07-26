@@ -1,4 +1,4 @@
-package com.test.myRetail.service;
+package com.poc.myRetail.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,10 +20,10 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.DBObject;
-import com.test.myRetail.dao.MyRetailRepository;
-import com.test.myRetail.dto.Price;
-import com.test.myRetail.dto.Product;
-import com.test.myRetail.model.ProductPriceDao;
+import com.poc.myRetail.dao.MyRetailRepository;
+import com.poc.myRetail.dto.Price;
+import com.poc.myRetail.dto.Product;
+import com.poc.myRetail.model.ProductPriceDao;
 
 @Service
 public class MyRetailService {

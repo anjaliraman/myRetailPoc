@@ -1,4 +1,4 @@
-package com.test.myRetail.model;
+package com.poc.myRetail.model;
 
 import javax.persistence.Id;
 

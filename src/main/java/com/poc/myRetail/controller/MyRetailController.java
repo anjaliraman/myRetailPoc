@@ -1,4 +1,4 @@
-package com.test.myRetail.controller;
+package com.poc.myRetail.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.test.myRetail.dto.Product;
-import com.test.myRetail.service.MyRetailService;
+import com.poc.myRetail.dto.Product;
+import com.poc.myRetail.service.MyRetailService;
 
 @RestController
 public class MyRetailController {
