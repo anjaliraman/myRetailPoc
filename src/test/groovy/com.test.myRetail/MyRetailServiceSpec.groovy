@@ -6,6 +6,7 @@ import com.poc.myRetail.dto.Product
 import com.poc.myRetail.model.ProductPriceDao
 import com.poc.myRetail.service.MyRetailService
 import groovy.json.JsonSlurper
+import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.util.MultiValueMap
@@ -14,33 +15,34 @@ import spock.lang.Specification
 
 class MyRetailServiceSpec extends Specification{
     MyRetailService myRetailService = new MyRetailService()
-    MyRetailRepository repo = Mock(MyRetailRepository)
+    MyRetailRepository myRetailRepository = Mock(MyRetailRepository)
     RestTemplate restTemplate = Mock(RestTemplate)
+    ResponseEntity responseEntity = Mock(ResponseEntity)
 
     def setup(){
 
-        myRetailService.myRetailRepository = repo
+        myRetailService.myRetailRepository = myRetailRepository
         myRetailService.restTemplate = restTemplate
     }
-
 
 
     def "getProductDetailsById returns value"(){
         given:
         def productObj = new Product(15117729, "The Big Lebowski (Blu-ray)", new Price(17.99, "USD"))
         def prodDao = new ProductPriceDao(15117729,17.99, "USD")
-
-        when: 'product service getProduct is called'
+        HttpHeaders headers = new HttpHeaders("Accept":"application/json")
+        when: 'product service getProductById is called'
         def response = myRetailService.getProductDetailsById(15117729)
 
 
         then: "result returned"
+        1 * restTemplate.exchange(_, _, _, _) >> responseEntity
+        responseEntity.body >> targetResponse
+        1 * myRetailRepository.findOne(15117729) >> prodDao;
 
-       // 1 * myRetailService.getProductName() >> "The Big Lebowski (Blu-ray)"
-        1 * restTemplate.exchange(_, _, _, _) >> new ResponseEntity(new JsonSlurper().parseText(targetResponse), new HashMap<String, String> () , HttpStatus.ACCEPTED)
-        1 * repo.findOne(15117729) >> prodDao
-
-        response == productObj
+        response.name == productObj.name
+        response.price.value == productObj.price.value
+        response.price.currencyCode == productObj.price.currencyCode
 
     }
 

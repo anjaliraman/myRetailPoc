@@ -62,7 +62,7 @@ public class MyRetailService {
 		}catch(Exception e) {
 			System.out.println("Exception: "+e.getMessage());
 		}
-		return "Not OK";
+		return "Not Found";
 	}
 
 	public String updatePriceInfo(long id, Product p) {

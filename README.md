@@ -22,3 +22,8 @@ Installation:
 4) There should be error on start-up, you should be able to see a similar text shown below if the server has started up with no errors.
 
 2017-07-24 16:02:39.727  INFO 20853 --- [           main] c.test.myRetail.MyRetailAppBootStarter   : Started MyRetailAppBootStarter in 2.866 seconds (JVM running for 3.111)
+
+Example to get response:
+5) Launch postman or any rest client and hit the end points 
+
+http://localhost:8080/products/15117729 - GET Http Method 
