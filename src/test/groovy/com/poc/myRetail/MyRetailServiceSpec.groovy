@@ -1,4 +1,4 @@
-package com.test.myRetail
+
 
 import com.poc.myRetail.dao.MyRetailRepository
 import com.poc.myRetail.dto.Price
@@ -45,6 +45,20 @@ class MyRetailServiceSpec extends Specification{
         response.price.currencyCode == productObj.price.currencyCode
 
     }
+	
+	def "update price info"(){
+		given:
+		def productObj = new Product(15117729, "The Big Lebowski (Blu-ray)", new Price(27.99, "USD"))
+		def prodDao = new ProductPriceDao(15117729,27.99, "USD")
+		HttpHeaders headers = new HttpHeaders("Accept":"application/json")
+		when: 'product service updatePriceInfo is called'
+		def response = myRetailService.updatePriceInfo(15117729,productObj)
+		then: "result returned"
+		1 * myRetailRepository.findOne(15117729) >> prodDao;
+		
+		response == "Done"
+
+	}
 
 
 

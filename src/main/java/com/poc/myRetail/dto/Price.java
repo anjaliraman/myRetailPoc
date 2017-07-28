@@ -1,9 +1,5 @@
 package com.poc.myRetail.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Id;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 

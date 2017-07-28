@@ -13,7 +13,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 import com.poc.myRetail.dao.MyRetailRepository;
-import com.poc.myRetail.dto.Product;
 import com.poc.myRetail.model.ProductPriceDao;
 
 @SpringBootApplication
